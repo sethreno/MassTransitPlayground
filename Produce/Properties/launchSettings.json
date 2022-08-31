@@ -1,6 +1,6 @@
 ﻿{
   "profiles": {
-    "GettingStarted": {
+    "Produce": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "environmentVariables": {

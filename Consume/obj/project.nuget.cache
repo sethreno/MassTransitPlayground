@@ -1,13 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "kevJ8L+wT08Nq9cEvpCzmUI2I/JnjCTtXR8wqeGbYFdFvdFwXWrAalNrP31CLWhsPEnFt9HZipuRCon+b+PI1A==",
+  "dgSpecHash": "S9WWCHhkwhf+Bv2C0FeQ/UVruGTI6vn+vQceuH6epR+dCsEkldKAC6drnafZN7YpEyIeo4l0kigfkjcuxW9FVA==",
   "success": true,
   "projectFilePath": "/workspaces/mt/Consume/Consume.csproj",
   "expectedPackageFiles": [
     "/home/vscode/.nuget/packages/masstransit/8.0.6/masstransit.8.0.6.nupkg.sha512",
     "/home/vscode/.nuget/packages/masstransit.abstractions/8.0.6/masstransit.abstractions.8.0.6.nupkg.sha512",
-    "/home/vscode/.nuget/packages/masstransit.aspnetcore/7.3.1/masstransit.aspnetcore.7.3.1.nupkg.sha512",
-    "/home/vscode/.nuget/packages/masstransit.extensions.dependencyinjection/7.3.1/masstransit.extensions.dependencyinjection.7.3.1.nupkg.sha512",
     "/home/vscode/.nuget/packages/masstransit.rabbitmq/8.0.6/masstransit.rabbitmq.8.0.6.nupkg.sha512",
     "/home/vscode/.nuget/packages/microsoft.extensions.configuration/6.0.0/microsoft.extensions.configuration.6.0.0.nupkg.sha512",
     "/home/vscode/.nuget/packages/microsoft.extensions.configuration.abstractions/6.0.0/microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",

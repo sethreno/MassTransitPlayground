@@ -11,7 +11,7 @@ public class Worker : BackgroundService
     {
         _bus = bus;
         var args = Environment.GetCommandLineArgs();
-        var clientsIndex = Array.IndexOf(args, "--clients");
+        var clientsIndex = Array.IndexOf(args, "--clientCodes");
         var clients = args[clientsIndex + 1];
         _clientCodes = clients.Split(",").ToHashSet();
     }
@@ -29,6 +29,8 @@ public class Worker : BackgroundService
                         Text = $"The time is {DateTimeOffset.Now}"
                     }
                 );
+
+                Console.WriteLine("publishing for " + clientCode);
 
                 await Task.Delay(1000, stoppingToken);
             }

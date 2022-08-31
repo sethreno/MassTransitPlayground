@@ -1,5 +1,7 @@
 using Consume;
+using Contracts;
 using MassTransit;
+using RabbitMQ.Client;
 
 Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
@@ -20,7 +22,53 @@ Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
                             h.Password("guest");
                         }
                     );
-                    cfg.ConfigureEndpoints(context);
+                    cfg.Send<Message>(t =>
+                    {
+                        t.UseRoutingKeyFormatter(context => context.Message.ClientCode);
+                    });
+                    cfg.Message<Message>(x => x.SetEntityName("message"));
+                    cfg.Publish<Message>(x => x.ExchangeType = ExchangeType.Direct);
+
+                    cfg.ReceiveEndpoint(
+                        "aag-messages",
+                        x =>
+                        {
+                            x.ConfigureConsumeTopology = false;
+                            x.Consumer<MessageConsumer>();
+                            x.SetQueueArgument("x-single-active-consumer", true);
+                            x.Bind(
+                                "message",
+                                s =>
+                                {
+                                    s.RoutingKey = "aag";
+                                    s.ExchangeType = ExchangeType.Direct;
+                                }
+                            );
+                        }
+                    );
+
+                    cfg.ReceiveEndpoint(
+                        "acore-messages",
+                        x =>
+                        {
+                            x.ConfigureConsumeTopology = false;
+                            x.Consumer<MessageConsumer>();
+                            x.SetQueueArgument("x-single-active-consumer", true);
+                            x.Bind(
+                                "message",
+                                s =>
+                                {
+                                    s.RoutingKey = "acore";
+                                    s.ExchangeType = ExchangeType.Direct;
+                                }
+                            );
+                        }
+                    );
+
+                    // I don't think the following is needed
+                    // pretty sure that's the code above eliminates the need
+                    // to call ConfigureEndpoints
+                    //cfg.ConfigureEndpoints(context);
                 }
             );
         });

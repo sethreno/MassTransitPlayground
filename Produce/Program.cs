@@ -1,5 +1,7 @@
 using Produce;
+using Contracts;
 using MassTransit;
+using RabbitMQ.Client;
 
 Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
@@ -9,6 +11,7 @@ Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
             x.UsingRabbitMq(
                 (context, cfg) =>
                 {
+
                     cfg.Host(
                         "host.docker.internal",
                         "/",
@@ -18,7 +21,12 @@ Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
                             h.Password("guest");
                         }
                     );
-                    cfg.ConfigureEndpoints(context);
+                    cfg.Send<Message>(y => y.UseRoutingKeyFormatter(
+                        context => context.Message.ClientCode));
+
+                    cfg.Message<Message>(x => x.SetEntityName("message"));
+                    cfg.Publish<Message>(x => x.ExchangeType = ExchangeType.Direct);
+                    //cfg.ConfigureEndpoints(context);
                 }
             );
         });

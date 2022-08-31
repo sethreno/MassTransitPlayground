@@ -1,12 +1,21 @@
 using Consume;
 using MassTransit;
+using GreenPipes.Util;
+using RabbitMQ.Client;
+//using RoutingKeyTopic;
 
 Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
+
+        var clientsIndex = Array.IndexOf(args, "--clients");
+        var clients = args[clientsIndex + 1];
+        var clientCodes = clients.Split(",").ToHashSet();
+
         services.AddMassTransit(x =>
         {
             x.AddConsumer<Consume.MessageConsumer>();
+
 
             x.UsingRabbitMq(
                 (context, cfg) =>
@@ -20,7 +29,25 @@ Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
                             h.Password("guest");
                         }
                     );
-                    cfg.ConfigureEndpoints(context);
+
+                    foreach(var clientCode in clientCodes)
+                    {
+                        cfg.ReceiveEndpoint($"message-{clientCode}", y =>
+                        {
+                            y.ConfigureConsumeTopology = false;
+
+                            y.Consumer<MessageConsumer>();
+
+
+                            y.Bind("message", s => 
+                            {
+                                s.RoutingKey = clientCode;
+                                s.ExchangeType = ExchangeType.Direct;
+                            });
+                        });
+                    }
+
+                    //cfg.ConfigureEndpoints(context);
                 }
             );
         });

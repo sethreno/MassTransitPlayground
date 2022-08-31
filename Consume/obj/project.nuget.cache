@@ -1,14 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "kevJ8L+wT08Nq9cEvpCzmUI2I/JnjCTtXR8wqeGbYFdFvdFwXWrAalNrP31CLWhsPEnFt9HZipuRCon+b+PI1A==",
+  "dgSpecHash": "x1pbCIXccgukbPlSyZkcfpvZTJJAYR///DQyfpGsrAsUv7neWvZCD8xwMOBK/j7eg0Ai/N4qOib/3ADSLGZs3g==",
   "success": true,
   "projectFilePath": "/workspaces/mt/Consume/Consume.csproj",
   "expectedPackageFiles": [
-    "/home/vscode/.nuget/packages/masstransit/8.0.6/masstransit.8.0.6.nupkg.sha512",
-    "/home/vscode/.nuget/packages/masstransit.abstractions/8.0.6/masstransit.abstractions.8.0.6.nupkg.sha512",
+    "/home/vscode/.nuget/packages/automatonymous/5.1.3/automatonymous.5.1.3.nupkg.sha512",
+    "/home/vscode/.nuget/packages/greenpipes/4.0.1/greenpipes.4.0.1.nupkg.sha512",
+    "/home/vscode/.nuget/packages/masstransit/7.3.1/masstransit.7.3.1.nupkg.sha512",
     "/home/vscode/.nuget/packages/masstransit.aspnetcore/7.3.1/masstransit.aspnetcore.7.3.1.nupkg.sha512",
     "/home/vscode/.nuget/packages/masstransit.extensions.dependencyinjection/7.3.1/masstransit.extensions.dependencyinjection.7.3.1.nupkg.sha512",
-    "/home/vscode/.nuget/packages/masstransit.rabbitmq/8.0.6/masstransit.rabbitmq.8.0.6.nupkg.sha512",
+    "/home/vscode/.nuget/packages/masstransit.rabbitmq/7.3.1/masstransit.rabbitmq.7.3.1.nupkg.sha512",
+    "/home/vscode/.nuget/packages/microsoft.bcl.asyncinterfaces/5.0.0/microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "/home/vscode/.nuget/packages/microsoft.extensions.configuration/6.0.0/microsoft.extensions.configuration.6.0.0.nupkg.sha512",
     "/home/vscode/.nuget/packages/microsoft.extensions.configuration.abstractions/6.0.0/microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "/home/vscode/.nuget/packages/microsoft.extensions.configuration.binder/6.0.0/microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
@@ -36,7 +38,10 @@
     "/home/vscode/.nuget/packages/microsoft.extensions.options/6.0.0/microsoft.extensions.options.6.0.0.nupkg.sha512",
     "/home/vscode/.nuget/packages/microsoft.extensions.options.configurationextensions/6.0.0/microsoft.extensions.options.configurationextensions.6.0.0.nupkg.sha512",
     "/home/vscode/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "/home/vscode/.nuget/packages/rabbitmq.client/6.4.0/rabbitmq.client.6.4.0.nupkg.sha512",
+    "/home/vscode/.nuget/packages/newid/3.0.3/newid.3.0.3.nupkg.sha512",
+    "/home/vscode/.nuget/packages/newtonsoft.json/12.0.1/newtonsoft.json.12.0.1.nupkg.sha512",
+    "/home/vscode/.nuget/packages/newtonsoft.json.bson/1.0.2/newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "/home/vscode/.nuget/packages/rabbitmq.client/6.2.2/rabbitmq.client.6.2.2.nupkg.sha512",
     "/home/vscode/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "/home/vscode/.nuget/packages/system.diagnostics.eventlog/6.0.0/system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "/home/vscode/.nuget/packages/system.memory/4.5.4/system.memory.4.5.4.nupkg.sha512",
@@ -44,8 +49,9 @@
     "/home/vscode/.nuget/packages/system.reflection.emit.lightweight/4.7.0/system.reflection.emit.lightweight.4.7.0.nupkg.sha512",
     "/home/vscode/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/home/vscode/.nuget/packages/system.text.encodings.web/6.0.0/system.text.encodings.web.6.0.0.nupkg.sha512",
-    "/home/vscode/.nuget/packages/system.text.json/6.0.2/system.text.json.6.0.2.nupkg.sha512",
-    "/home/vscode/.nuget/packages/system.threading.channels/6.0.0/system.threading.channels.6.0.0.nupkg.sha512"
+    "/home/vscode/.nuget/packages/system.text.json/6.0.0/system.text.json.6.0.0.nupkg.sha512",
+    "/home/vscode/.nuget/packages/system.threading.channels/4.7.1/system.threading.channels.4.7.1.nupkg.sha512",
+    "/home/vscode/.nuget/packages/system.valuetuple/4.5.0/system.valuetuple.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

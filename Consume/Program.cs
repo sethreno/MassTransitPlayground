@@ -49,7 +49,7 @@ Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
                                 x.SetQueueArgument("x-single-active-consumer", true);
 
                                 // maybe this can be higher?
-                                x.PrefetchCount = 1;
+                                x.PrefetchCount = config.GetValue<int?>("prefetchCount") ?? 1;
 
                                 x.ConfigureConsumeTopology = false;
                                 x.Consumer<MessageConsumer>(
@@ -57,7 +57,8 @@ Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
                                     y =>
                                     {
                                         // not sure we need this
-                                        y.ConcurrentMessageLimit = 1;
+                                        y.ConcurrentMessageLimit =
+                                            config.GetValue<int?>("concurrentMessageLimit") ?? 1;
                                     }
                                 );
                                 x.Bind(

@@ -16,7 +16,8 @@ Will create an exchange named "message" that routes messages to client specific
 queues based on the ClientCode property of the message. Because the queues have
 the Single Active Consumer flag on a single consumer for each queue will be
 chosen as "active" and will recieve all messages. This will likely be the first
-consumer to start up.
+consumer to start up. Other consumers may still connect to the queue and one of
+them will be chosen as a backup in case the active consumer goes offline.
 
 ```mermaid
 flowchart TD;
@@ -26,14 +27,11 @@ flowchart TD;
 
     aag-message-.-consumer-b;
     aark-message-.-consumer-b;
-    ametro-message-.-consumer-b;
 
     aag-message-->consumer-a;
     aark-message-->consumer-a;
     ametro-message-->consumer-a;
 
-    aag-message-.-consumer-c;
-    aark-message-.-consumer-c;
     ametro-message-.-consumer-c;
 ```
 

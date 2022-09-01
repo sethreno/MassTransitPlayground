@@ -13,9 +13,10 @@ Running the app with the following parameters:
     dotnet run --clientCodes "aag,aark,ametro"
 
 Will create an exchange named "message" that routes messages to client specific
-queues based on the ClientCode property of the messaage. Because the queues have
+queues based on the ClientCode property of the message. Because the queues have
 the Single Active Consumer flag on a single consumer for each queue will be
-chosen as "active" and all will recieve all messages.
+chosen as "active" and will recieve all messages. This will likely be the first
+consumer to start up.
 
 ```mermaid
 flowchart TD;
@@ -27,13 +28,13 @@ flowchart TD;
     aark-message-->consumer-a;
     ametro-message-->consumer-a;
 
-    aag-message-.->consumer-b;
-    aark-message-.->consumer-b;
-    ametro-message-.->consumer-b;
+    aag-message-.-consumer-b;
+    aark-message-.-consumer-b;
+    ametro-message-.-consumer-b;
 
-    aag-message-.->consumer-c;
-    aark-message-.->consumer-c;
-    ametro-message-.->consumer-c;
+    aag-message-.-consumer-c;
+    aark-message-.-consumer-c;
+    ametro-message-.-consumer-c;
 ```
 
 The messages will not be load balanced, but will switch over to one of the

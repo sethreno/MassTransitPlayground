@@ -24,13 +24,13 @@ flowchart TD;
     message-->aark-message;
     message-->ametro-message;
 
-    aag-message-->consumer-a;
-    aark-message-->consumer-a;
-    ametro-message-->consumer-a;
-
     aag-message-.-consumer-b;
     aark-message-.-consumer-b;
     ametro-message-.-consumer-b;
+
+    aag-message-->consumer-a;
+    aark-message-->consumer-a;
+    ametro-message-->consumer-a;
 
     aag-message-.-consumer-c;
     aark-message-.-consumer-c;

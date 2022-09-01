@@ -22,13 +22,13 @@ graph TD;
     message-->aag-message;
     message-->aark-message;
     message-->ametro-message;
-    aag-message--->Consumer A;
+    aag-message-->Consumer A;
     aag-message-.->Consumer B;
     aag-message-.->Consumer C;
-    aark-message--->Consumer A;
+    aark-message-->Consumer A;
     aark-message-.->Consumer B;
     aark-message-.->Consumer C;
-    ametro-message--->Consumer A;
+    ametro-message-->Consumer A;
     ametro-message-.->Consumer B;
     ametro-message-.->Consumer C;
 ```
@@ -41,11 +41,11 @@ graph TD;
     message-->aag-message SAC;
     message-->aark-message SAC;
     message-->ametro-message SAC;
-    aag-message--->Consumer B;
+    aag-message-->Consumer B;
     aag-message-.->Consumer C;
-    aark-message--->Consumer B;
+    aark-message-->Consumer B;
     aark-message-.->Consumer C;
-    ametro-message--->Consumer B;
+    ametro-message-->Consumer B;
     ametro-message-.->Consumer C;
 ```
 

@@ -1,6 +1,7 @@
 using Produce;
 using Contracts;
 using MassTransit;
+using Contracts;
 using RabbitMQ.Client;
 
 Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
@@ -21,12 +22,15 @@ Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
                             h.Password("guest");
                         }
                     );
-                    cfg.Send<Message>(y => y.UseRoutingKeyFormatter(
-                        context => context.Message.ClientCode));
 
+                    cfg.Send<Message>(t =>
+                    {
+                        t.UseRoutingKeyFormatter(context => context.Message.ClientCode);
+                    });
                     cfg.Message<Message>(x => x.SetEntityName("message"));
                     cfg.Publish<Message>(x => x.ExchangeType = ExchangeType.Direct);
-                    //cfg.ConfigureEndpoints(context);
+
+                    cfg.ConfigureEndpoints(context);
                 }
             );
         });

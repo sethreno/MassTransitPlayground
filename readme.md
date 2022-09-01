@@ -18,7 +18,7 @@ the Single Active Consumer flag on a single consumer for each queue will be
 chosen as "active" and all will recieve all messages.
 
 ```mermaid
-graph TD;
+flowchart TD;
     message-->aag-message;
     message-->aark-message;
     message-->ametro-message;
@@ -37,7 +37,7 @@ The messages will not be load balanced, but will switch over to one of the
 backups if Consumer A goes offline.
 
 ```mermaid
-graph TD;
+flowchart TD;
     message-->aag-message SAC;
     message-->aark-message SAC;
     message-->ametro-message SAC;

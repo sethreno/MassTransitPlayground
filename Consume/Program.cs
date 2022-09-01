@@ -36,8 +36,6 @@ Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
 
                     foreach (var clientCode in clientCodes)
                     {
-                        Console.WriteLine($"creating queue for {clientCode}");
-
                         // create a separate queue for each client
                         // messages sent to the "message" queue will be routed
                         // to the client specific queue based on ClientCode
@@ -50,8 +48,18 @@ Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
                                 // & deadlocking issues in the client db
                                 x.SetQueueArgument("x-single-active-consumer", true);
 
+                                // maybe this can be higher?
+                                x.PrefetchCount = 1;
+
                                 x.ConfigureConsumeTopology = false;
-                                x.Consumer<MessageConsumer>(services.BuildServiceProvider());
+                                x.Consumer<MessageConsumer>(
+                                    services.BuildServiceProvider(),
+                                    y =>
+                                    {
+                                        // not sure we need this
+                                        y.ConcurrentMessageLimit = 1;
+                                    }
+                                );
                                 x.Bind(
                                     "message",
                                     s =>
@@ -63,16 +71,9 @@ Microsoft.Extensions.Hosting.IHost host = Host.CreateDefaultBuilder(args)
                             }
                         );
                     }
-
-                    // I don't think the following is needed
-                    // pretty sure that's the code above eliminates the need
-                    // to call ConfigureEndpoints
-                    //cfg.ConfigureEndpoints(context);
                 }
             );
         });
-
-        //services.AddHostedService<Worker>();
     })
     .Build();
 

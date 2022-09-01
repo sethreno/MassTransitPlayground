@@ -1,5 +1,3 @@
-/workspaces/mt/Produce/bin/Debug/net6.0/appsettings.Development.json
-/workspaces/mt/Produce/bin/Debug/net6.0/appsettings.json
 /workspaces/mt/Produce/bin/Debug/net6.0/Produce
 /workspaces/mt/Produce/bin/Debug/net6.0/Produce.deps.json
 /workspaces/mt/Produce/bin/Debug/net6.0/Produce.runtimeconfig.json

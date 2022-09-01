@@ -1,5 +1,3 @@
-/workspaces/mt/Consume/bin/Debug/net6.0/appsettings.Development.json
-/workspaces/mt/Consume/bin/Debug/net6.0/appsettings.json
 /workspaces/mt/Consume/bin/Debug/net6.0/Consume
 /workspaces/mt/Consume/bin/Debug/net6.0/Consume.deps.json
 /workspaces/mt/Consume/bin/Debug/net6.0/Consume.runtimeconfig.json

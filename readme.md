@@ -19,18 +19,18 @@ chosen as "active" and all will recieve all messages.
 
 ```mermaid
 graph TD;
-    message-->aag-message SAC;
-    message-->aark-message SAC;
-    message-->ametro-message SAC;
-    aag-message SAC--->Consumer A;
-    aag-message SAC-.->Consumer B;
-    aag-message SAC-.->Consumer C;
-    aark-message SAC--->Consumer A;
-    aark-message SAC-.->Consumer B;
-    aark-message SAC-.->Consumer C;
-    ametro-message SAC--->Consumer A;
-    ametro-message SAC-.->Consumer B;
-    ametro-message SAC-.->Consumer C;
+    message-->aag-message;
+    message-->aark-message;
+    message-->ametro-message;
+    aag-message--->Consumer A;
+    aag-message-.->Consumer B;
+    aag-message-.->Consumer C;
+    aark-message--->Consumer A;
+    aark-message-.->Consumer B;
+    aark-message-.->Consumer C;
+    ametro-message--->Consumer A;
+    ametro-message-.->Consumer B;
+    ametro-message-.->Consumer C;
 ```
 
 The messages will not be load balanced, but will switch over to one of the
@@ -41,12 +41,12 @@ graph TD;
     message-->aag-message SAC;
     message-->aark-message SAC;
     message-->ametro-message SAC;
-    aag-message SAC--->Consumer B;
-    aag-message SAC-.->Consumer C;
-    aark-message SAC--->Consumer B;
-    aark-message SAC-.->Consumer C;
-    ametro-message SAC--->Consumer B;
-    ametro-message SAC-.->Consumer C;
+    aag-message--->Consumer B;
+    aag-message-.->Consumer C;
+    aark-message--->Consumer B;
+    aark-message-.->Consumer C;
+    ametro-message--->Consumer B;
+    ametro-message-.->Consumer C;
 ```
 
 

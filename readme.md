@@ -19,17 +19,21 @@ chosen as "active" and all will recieve all messages.
 
 ```mermaid
 flowchart TD;
-    message-->aag-message-->consumer-a;
-    message-->aark-message-->consumer-a;
-    message-->ametro-message-->consumer-a;
+    message-->aag-message;
+    message-->aark-message;
+    message-->ametro-message;
 
-    message-->aag-message-.->consumer-b;
-    message-->aark-message-.->consumer-b;
-    message-->ametro-message-.->consumer-b;
+    aag-message-->consumer-a;
+    aark-message-->consumer-a;
+    ametro-message-->consumer-a;
 
-    message-->aag-message-.->consumer-c;
-    message-->aark-message-.->consumer-c;
-    message-->ametro-message-.->consumer-c;
+    aag-message-.->consumer-b;
+    aark-message-.->consumer-b;
+    ametro-message-.->consumer-b;
+
+    aag-message-.->consumer-c;
+    aark-message-.->consumer-c;
+    ametro-message-.->consumer-c;
 ```
 
 The messages will not be load balanced, but will switch over to one of the
@@ -37,13 +41,13 @@ backups if Consumer A goes offline.
 
 ```mermaid
 flowchart TD;
-    message-->aag-message-->consumer-b;
-    message-->aark-message-->consumer-b;
-    message-->ametro-message-->consumer-a;
+    message-->aag-message;
+    message-->aark-message;
+    message-->ametro-message;
 
-    message-->aag-message-.->consumer-c;
-    message-->aark-message-.->consumer-c;
-    message-->ametro-message-->consumer-c;
+    aag-message-->consumer-b;
+    aark-message-->consumer-b;
+    ametro-message-->consumer-c;
 ```
 
 

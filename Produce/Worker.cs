@@ -5,15 +5,16 @@ using MassTransit;
 public class Worker : BackgroundService
 {
     readonly IBus _bus;
+    readonly ILogger<Worker> _logger;
     readonly HashSet<string> _clientCodes;
+    readonly int _publishPerSecond;
 
-    public Worker(IBus bus)
+    public Worker(IBus bus, ILogger<Worker> logger, IConfiguration config)
     {
         _bus = bus;
-        var args = Environment.GetCommandLineArgs();
-        var clientsIndex = Array.IndexOf(args, "--clientCodes");
-        var clients = args[clientsIndex + 1];
-        _clientCodes = clients.Split(",").ToHashSet();
+        _logger = logger;
+        _clientCodes = config["clientCodes"].Split(",").ToHashSet();
+        _publishPerSecond = config.GetValue<int?>("publishPerSecond") ?? 1;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -22,18 +23,19 @@ public class Worker : BackgroundService
         {
             foreach (var clientCode in _clientCodes)
             {
-                await _bus.Publish(
-                    new Message
-                    {
-                        ClientCode = clientCode,
-                        Text = $"The time is {DateTimeOffset.Now}"
-                    }
-                );
-
-                Console.WriteLine("publishing for " + clientCode);
-
-                await Task.Delay(1000, stoppingToken);
+                for (var i = 1; i <= _publishPerSecond; i++)
+                {
+                    await _bus.Publish(
+                        new Message
+                        {
+                            ClientCode = clientCode,
+                            Text = $"published: {DateTimeOffset.Now:u}"
+                        }
+                    );
+                }
+                _logger.LogInformation($"published for {clientCode}");
             }
+            await Task.Delay(1000, stoppingToken);
         }
     }
 }
